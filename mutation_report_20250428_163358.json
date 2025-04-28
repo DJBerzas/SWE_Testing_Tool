@@ -1,6 +1,6 @@
 {
-  "timestamp": "2025-04-28T16:07:37.111754",
-  "duration_seconds": 0.150872,
+  "timestamp": "2025-04-28T16:33:58.991367",
+  "duration_seconds": 0.121617,
   "source_file": "calculator.py",
   "test_file": "test_calculator.py",
   "total_mutations": 14,
@@ -10,129 +10,129 @@
   "mutations": [
     {
       "mutation": "+ to -",
-      "line_number": 4,
+      "line_number": 3,
       "caught": false,
       "failures": 0,
       "errors": 0,
       "original_code": "        return a + b",
-      "mutated_code": "        return a - b"
+      "mutated_code": "    def add(self, a, b):"
     },
     {
       "mutation": "- to +",
-      "line_number": 8,
+      "line_number": 6,
       "caught": false,
       "failures": 0,
       "errors": 0,
       "original_code": "        return a - b",
-      "mutated_code": ""
+      "mutated_code": "    def subtract(self, a, b):"
     },
     {
       "mutation": "* to /",
-      "line_number": 12,
+      "line_number": 9,
       "caught": false,
       "failures": 0,
       "errors": 0,
       "original_code": "        return a * b",
-      "mutated_code": "    def divide(self, a, b):"
+      "mutated_code": "    def multiply(self, a, b):"
     },
     {
       "mutation": "== to !=",
-      "line_number": 16,
+      "line_number": 12,
       "caught": false,
       "failures": 0,
       "errors": 0,
-      "original_code": "        if b == 0:  # This will be mutated to b != 0",
-      "mutated_code": ""
+      "original_code": "        if b == 0:",
+      "mutated_code": "    def divide(self, a, b):"
     },
     {
       "mutation": "/ to *",
-      "line_number": 18,
+      "line_number": 14,
       "caught": false,
       "failures": 0,
       "errors": 0,
       "original_code": "        return a / b",
-      "mutated_code": "        if exp < 0:"
+      "mutated_code": "            raise ValueError('Cannot divide by zero')"
     },
     {
       "mutation": "< to >",
-      "line_number": 23,
+      "line_number": 17,
       "caught": false,
       "failures": 0,
       "errors": 0,
-      "original_code": "        if exp < 0:  # Mutation: < to >",
-      "mutated_code": "        if b <= 0:"
+      "original_code": "        if exp < 0:",
+      "mutated_code": "    def power(self, base, exp):"
     },
     {
       "mutation": "** to *",
-      "line_number": 25,
+      "line_number": 19,
       "caught": false,
       "failures": 0,
       "errors": 0,
       "original_code": "        return base ** exp",
-      "mutated_code": "        return a % b"
+      "mutated_code": "            raise ValueError('Negative exponents not supported')"
     },
     {
       "mutation": "<= to >=",
-      "line_number": 28,
+      "line_number": 22,
       "caught": true,
       "failures": 0,
       "errors": 1,
-      "original_code": "        if b <= 0:  # Mutation: <= to >=",
-      "mutated_code": "        if b != 0:"
+      "original_code": "        if b <= 0:",
+      "mutated_code": "    def mod(self, a, b):"
     },
     {
       "mutation": "% to /",
-      "line_number": 30,
+      "line_number": 24,
       "caught": true,
       "failures": 0,
       "errors": 1,
       "original_code": "        return a % b",
-      "mutated_code": "        raise ValueError('Cannot divide by zero')"
+      "mutated_code": "            raise ValueError('Modulo by non-positive number')"
     },
     {
       "mutation": "!= to ==",
-      "line_number": 33,
+      "line_number": 27,
       "caught": true,
       "failures": 0,
       "errors": 1,
-      "original_code": "        if b != 0:  # Mutation: != to ==",
-      "mutated_code": "        if x >= 0:"
+      "original_code": "        if b != 0:",
+      "mutated_code": "    def floor_divide(self, a, b):"
     },
     {
       "mutation": ">= to <=",
-      "line_number": 38,
+      "line_number": 32,
       "caught": true,
       "failures": 0,
       "errors": 1,
-      "original_code": "        if x >= 0:  # Mutation: >= to <=",
-      "mutated_code": "        if a > b:"
+      "original_code": "        if x >= 0:",
+      "mutated_code": "    def abs(self, x):"
     },
     {
       "mutation": "> to <",
-      "line_number": 43,
+      "line_number": 37,
       "caught": true,
       "failures": 0,
       "errors": 1,
-      "original_code": "        if a > b:  # Mutation: > to <",
-      "mutated_code": "        if a < b:"
+      "original_code": "        if a > b:",
+      "mutated_code": "    def max(self, a, b):"
     },
     {
       "mutation": "< to >",
-      "line_number": 48,
+      "line_number": 42,
       "caught": true,
       "failures": 0,
       "errors": 1,
-      "original_code": "        if a < b:  # Mutation: < to >",
-      "mutated_code": "Unknown line"
+      "original_code": "        if a < b:",
+      "mutated_code": "    def min(self, a, b):"
     },
     {
       "mutation": "// to /",
-      "line_number": 34,
+      "line_number": 28,
       "caught": false,
       "failures": 0,
       "errors": 0,
       "original_code": "            return a // b",
-      "mutated_code": "            return x"
+      "mutated_code": "        if b != 0:"
     }
   ]
 }

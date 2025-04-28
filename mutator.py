@@ -22,7 +22,6 @@ class Mutator:
     def create_mutations(self):
         mutations = []
         
-        # Define mutation pairs
         operator_mutations = [
             (ast.Add, ast.Sub, '+ to -'),
             (ast.Sub, ast.Add, '- to +'),
@@ -43,7 +42,6 @@ class Mutator:
         ]
         
         for node in ast.walk(self.original_ast):
-            # Binary operator mutations
             if isinstance(node, ast.BinOp):
                 for orig_op, new_op, name in operator_mutations:
                     if isinstance(node.op, orig_op):
@@ -53,7 +51,6 @@ class Mutator:
                                 n.op = new_op()
                         mutations.append((name, mutated_ast, node.lineno))
             
-            # Comparison operator mutations
             if isinstance(node, ast.Compare):
                 for i, op in enumerate(node.ops):
                     for orig_op, new_op, name in comparison_mutations:
@@ -68,36 +65,30 @@ class Mutator:
         return mutations
     
     def test_mutation(self, mutation_name, mutated_ast, line_number):
-        # Create a temporary file with the mutated code
         temp_file = "temp_calculator.py"
         with open(temp_file, 'w') as f:
             f.write(ast.unparse(mutated_ast))
         
         try:
-            # Remove any existing imports
             for key in list(sys.modules.keys()):
                 if key.startswith('temp_') or key == 'calculator':
                     del sys.modules[key]
             
-            # Import the mutated module
             spec = importlib.util.spec_from_file_location("temp_calculator", temp_file)
             module = importlib.util.module_from_spec(spec)
             sys.modules["temp_calculator"] = module
             spec.loader.exec_module(module)
             
-            # Modify sys.path to include current directory
             if '.' not in sys.path:
                 sys.path.insert(0, '.')
             
-            # Run the tests with the mutated module
             test_loader = unittest.TestLoader()
             test_module = __import__('test_calculator')
-            importlib.reload(test_module)  # Reload to use new mutated version
+            importlib.reload(test_module)
             suite = test_loader.loadTestsFromModule(test_module)
             result = unittest.TestResult()
             suite.run(result)
             
-            # Record detailed results
             test_result = {
                 'mutation': mutation_name,
                 'line_number': line_number,
@@ -110,7 +101,6 @@ class Mutator:
             
             self.mutation_results.append(test_result)
             
-            # Print immediate feedback
             status = "CAUGHT" if test_result['caught'] else "NOT CAUGHT"
             print(f"\nMutation '{mutation_name}' at line {line_number} was {status}")
             print(f"Original code: {test_result['original_code'].strip()}")
@@ -120,10 +110,8 @@ class Mutator:
                 print(f"Test errors: {test_result['errors']}")
         
         finally:
-            # Clean up
             if os.path.exists(temp_file):
                 os.remove(temp_file)
-            # Clean up modules
             for key in list(sys.modules.keys()):
                 if key.startswith('temp_') or key == 'calculator':
                     del sys.modules[key]
@@ -157,12 +145,10 @@ class Mutator:
             'mutations': self.mutation_results
         }
         
-        # Save report to file
         report_file = f"mutation_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
         with open(report_file, 'w') as f:
             json.dump(report, f, indent=2)
         
-        # Print summary
         print("\n=== Mutation Testing Report ===")
         print(f"Total mutations tested: {total_mutations}")
         print(f"Mutations caught: {caught_mutations}")
