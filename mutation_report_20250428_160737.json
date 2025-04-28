@@ -1,0 +1,138 @@
+{
+  "timestamp": "2025-04-28T16:07:37.111754",
+  "duration_seconds": 0.150872,
+  "source_file": "calculator.py",
+  "test_file": "test_calculator.py",
+  "total_mutations": 14,
+  "caught_mutations": 6,
+  "not_caught_mutations": 8,
+  "mutation_coverage": 42.857142857142854,
+  "mutations": [
+    {
+      "mutation": "+ to -",
+      "line_number": 4,
+      "caught": false,
+      "failures": 0,
+      "errors": 0,
+      "original_code": "        return a + b",
+      "mutated_code": "        return a - b"
+    },
+    {
+      "mutation": "- to +",
+      "line_number": 8,
+      "caught": false,
+      "failures": 0,
+      "errors": 0,
+      "original_code": "        return a - b",
+      "mutated_code": ""
+    },
+    {
+      "mutation": "* to /",
+      "line_number": 12,
+      "caught": false,
+      "failures": 0,
+      "errors": 0,
+      "original_code": "        return a * b",
+      "mutated_code": "    def divide(self, a, b):"
+    },
+    {
+      "mutation": "== to !=",
+      "line_number": 16,
+      "caught": false,
+      "failures": 0,
+      "errors": 0,
+      "original_code": "        if b == 0:  # This will be mutated to b != 0",
+      "mutated_code": ""
+    },
+    {
+      "mutation": "/ to *",
+      "line_number": 18,
+      "caught": false,
+      "failures": 0,
+      "errors": 0,
+      "original_code": "        return a / b",
+      "mutated_code": "        if exp < 0:"
+    },
+    {
+      "mutation": "< to >",
+      "line_number": 23,
+      "caught": false,
+      "failures": 0,
+      "errors": 0,
+      "original_code": "        if exp < 0:  # Mutation: < to >",
+      "mutated_code": "        if b <= 0:"
+    },
+    {
+      "mutation": "** to *",
+      "line_number": 25,
+      "caught": false,
+      "failures": 0,
+      "errors": 0,
+      "original_code": "        return base ** exp",
+      "mutated_code": "        return a % b"
+    },
+    {
+      "mutation": "<= to >=",
+      "line_number": 28,
+      "caught": true,
+      "failures": 0,
+      "errors": 1,
+      "original_code": "        if b <= 0:  # Mutation: <= to >=",
+      "mutated_code": "        if b != 0:"
+    },
+    {
+      "mutation": "% to /",
+      "line_number": 30,
+      "caught": true,
+      "failures": 0,
+      "errors": 1,
+      "original_code": "        return a % b",
+      "mutated_code": "        raise ValueError('Cannot divide by zero')"
+    },
+    {
+      "mutation": "!= to ==",
+      "line_number": 33,
+      "caught": true,
+      "failures": 0,
+      "errors": 1,
+      "original_code": "        if b != 0:  # Mutation: != to ==",
+      "mutated_code": "        if x >= 0:"
+    },
+    {
+      "mutation": ">= to <=",
+      "line_number": 38,
+      "caught": true,
+      "failures": 0,
+      "errors": 1,
+      "original_code": "        if x >= 0:  # Mutation: >= to <=",
+      "mutated_code": "        if a > b:"
+    },
+    {
+      "mutation": "> to <",
+      "line_number": 43,
+      "caught": true,
+      "failures": 0,
+      "errors": 1,
+      "original_code": "        if a > b:  # Mutation: > to <",
+      "mutated_code": "        if a < b:"
+    },
+    {
+      "mutation": "< to >",
+      "line_number": 48,
+      "caught": true,
+      "failures": 0,
+      "errors": 1,
+      "original_code": "        if a < b:  # Mutation: < to >",
+      "mutated_code": "Unknown line"
+    },
+    {
+      "mutation": "// to /",
+      "line_number": 34,
+      "caught": false,
+      "failures": 0,
+      "errors": 0,
+      "original_code": "            return a // b",
+      "mutated_code": "            return x"
+    }
+  ]
+}
