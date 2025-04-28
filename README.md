@@ -2,14 +2,7 @@
 
 A Python-based mutation testing tool that helps evaluate the effectiveness of test suites by systematically introducing faults (mutations) into the code and checking if the test suite can detect them.
 
-## Project Structure
 
-```
-.
-├── calculator.py          # Source code to be mutation tested
-├── test_calculator.py     # Test suite for the calculator
-└── mutator.py            # Mutation testing tool
-```
 
 ## Features
 
